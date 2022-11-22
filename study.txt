@@ -1,0 +1,97 @@
+前端是部署在GitHub上的
+纯后端部署在hero库上的
+
+VScode上 ES7 + React/Redux/React-Native插件
+          Simple React Snippets插件
+
+          快捷键将架构弄好，类是rcc 函数是rfc 
+
+          Auto Rename Tag
+          Auto Close Tag 
+          两个插件用来进行自动补全框代码
+
+
+右边结构我们组件要放在我们建的component文件夹里
+
+
+
+uuid 在npm里面的一个库，随机生成一个id 
+{
+  1.由算法机器生成：规范定义了包括网卡MAC地址、时间戳、名字空间（Namespace）、随机或伪随机数、时序等元素，以及从这些元素生成UUID的算法。UUID的复杂特性在保证了其唯一性的同时，意味着只能由计算机生成。
+
+  2.非人工指定，非人工识别：UUID是不能人工指定的，UUID的复杂性决定了“一般人“不能直接从一个UUID知道哪个对象和它关联。
+
+  3.重复的可能性极小：UUID的生成规范定义的算法主要目的就是要保证其唯一性。但这个唯一性是有限的，只在特定的范围内才能得到保证，这和UUID的类型有关（参见UUID的版本）
+}
+
+
+
+
+React.createContext() //联系上下文，（用钩子将组件连在一起）
+{
+  导入写法：
+  export const RecipeContext = React.createContext() //类似主题用法
+  自定义函数组件:{
+    
+  const recipeContextValue = {
+    handleRecipeAdd,
+    handleRecipeDel
+  }
+
+    return (
+    <RecipeContext.Provider value={recipeContextValue}>  //TODO重要
+      {/* recipes自定义名 sampleRecipes传的值，它是个list */}
+      <RecipeList
+        recipes={recipe
+      />
+    </RecipeContext.Provider>
+  );
+
+  }
+  其他组件内要用方法
+  import { RecipeContext } from './App';
+  const { handleRecipeAdd, handleRecipeDel } = useContext(RecipeContext);
+
+  //参考App.jsx 和 RecipeList.jsx 和 Recipe.jsx 组件
+  作用：减少我们传递参数时层层递进的问题（过于多层的话不断导入会使效率低下）
+  实质做法：利用我们这个方法生成个useContext（）钩子把他们钩在一起，我们要用函数方法，通过传值的方法进行传递
+}
+
+
+useEffect 钩子（hook）副作用
+{
+  why：我们如何用持久化，如何让我们更新页面状态时候某些功能不用通过事件处理会跟着变化
+  又名：副作用，额外的作用，setState更新状态（重新渲染页面时），我们的副作用也会跟着状态变化
+  例子：
+
+
+  const LOCAL_STROACE_KEY ='cookingWithReact.recipes'
+  
+export default function App() {
+  const [recipes,setRecipes]=useState(sampleRecipes)
+  const [count,setxxxx] = useState()
+
+    useEffect(()=>{
+    console.log('我是副作用，我跟着你重新变化啦！！！');
+  },[recipes,count]) 
+  //useEffect是一个函数，通过[recipes]绑定，recipes这个状态变化，我们的副作用就会伴随变化，等于依附的意思
+  //每当我用setRecipes进行状态修改都要渲染页面时，我们的副作用就会执行
+  //可以一次绑定多个
+
+    useEffect(()=>{
+    console.log('我是副作用，我跟着你重新变化啦！！！');
+    // 存储信息
+    localStorage.setItem(LOCAL_STROACE_KEY,JSON.stringify(recipes));
+  },[])
+  //谁也不绑定时候，只触发一次，就是第一次 渲染页面时进行触发一次副作用
+  TODO重要:我们可以看到控制台，我们刷新页面，重新渲染会出现两次，是因为我们的react18版本有种
+  <React.StrictMode>并发模式，会触发两次App这个组件，所以控制台会出现两条语句（并发高级内容）
+
+
+  // 存储信息
+   // localStorage.setItem(LOCAL_STROACE_KEY,JSON.stringify(recipes));
+    // localStorage.setItem把我们页面里的信息存储进去
+    //const LOCAL_STROACE_KEY ='cookingWithReact.recipes' 这是密钥 cookie值是我们存入的信息通过我们解析变成字符型
+    // JSON.stringify(recipes) 解析成字符型
+  }
+}

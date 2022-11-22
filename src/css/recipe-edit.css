@@ -1,0 +1,69 @@
+.recipe-edit {
+    padding: 30px;
+    /* 整个页面固定 */
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 50%;
+    /* 最大高度是100% */
+    max-height: 100%;
+    /* 如果页面元素超出最大高度就自动变化 */
+    overflow-y: auto;
+}
+
+.recipe-edit__remove-button-container {
+    text-align: end;
+}
+
+.recipe-edit__remove-button {
+    padding: 0;
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 1.5rem;
+}
+
+.recipe-edit__details-grid {
+    display: grid;
+    /* 列 auto 1fr 前面auto 后边元素等长*/
+    grid-template-columns: auto 1fr;
+    /* 每一行间距 */
+    row-gap: 10px;
+    /* 行间距 */
+    column-gap: 40px;
+}
+
+.recipe-edit__label {
+    font-weight: bold;
+}
+
+.recipe-edit__input {
+    border: 1px solid #333;
+    border-radius: 5px;
+    /* 根据里面内容做调节 */
+    font-size: inherit;
+    padding: 5px 10px;
+    outline: none;
+    width: 100%;
+}
+
+textarea.recipe-edit__input {
+    /* 不能拖大 */
+    resize: none;
+    /* 设置高 */
+    height: 200px;
+}
+
+.recipe-edit__ingredient-grid {
+    display: grid;
+    gap: 10px;
+    /* 上下重复，每个分成三份，每一项都是根据元素自动调节 */
+    grid-template-columns: repeat(3, auto);
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.recipe-edit__add-ingredient-btn-container {
+    margin-top: 20px;
+    text-align: center;
+}

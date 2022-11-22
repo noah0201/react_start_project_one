@@ -1,0 +1,51 @@
+.recipe {
+    padding: 20px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid black;
+}
+
+
+/* nth-last-child(2) 后面数第二个元素 */
+
+.recipe:nth-last-child(2) {
+    border-bottom: none;
+    /* 让最后一个recipe和add的button离远点 */
+    padding-bottom: 10px;
+}
+
+.recipe__header {
+    /* 弹性布局 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.recipe__title {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.recipe__row {
+    margin-top: 10px;
+}
+
+.recipe__label {
+    /* 标签 */
+    margin-right: 5px;
+}
+
+.recipe__value {
+    /* 设置里面的值的字重 */
+    font-weight: 300;
+}
+
+.recipe__value--indented {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.recipe__instructions {
+    /* 换行 */
+    white-space: pre-wrap;
+}

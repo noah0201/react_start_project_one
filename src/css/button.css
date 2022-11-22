@@ -1,0 +1,41 @@
+.btn {
+    background: none;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+
+/* 按钮的特性 */
+
+.btn--primary {
+    color: #fff;
+    /* hsl时有对比度 */
+    background-color: hsl(200, 100%, 50%);
+}
+
+.btn--primary:hover {
+    color: #fff;
+    background-color: hsl(200, 100%, 35%);
+}
+
+
+/* 删除按钮特性 */
+
+.btn--danger {
+    color: #fff;
+    /* hsl时有对比度 */
+    background-color: hsl(0, 100%, 50%);
+}
+
+.btn--danger:hover {
+    color: #fff;
+    background-color: hsl(0, 100%, 35%);
+}
+
+.mr-1 {
+    margin-right: 5px;
+}

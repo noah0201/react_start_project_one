@@ -1,0 +1,13 @@
+.recipe-list {
+    border-right: 1px solid black;
+    /* 最小高 */
+    min-height: 100vh;
+    /* 宽度 */
+    width: 50%;
+}
+
+.recipe-list__add-recipe-btn-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+}
